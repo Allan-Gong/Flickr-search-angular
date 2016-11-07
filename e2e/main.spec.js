@@ -8,14 +8,19 @@ describe('The main view', function () {
     page = require('./main.po');
   });
 
-  it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+  it('should display expected elements', function() {
+    expect(page.navbarBrand.getText().trim()).toBe('Flickr search');
+    expect(page.inputSearch.getAttribute('placeholder')).toBe('Type in 3 or more letters to start a search');
   });
 
-  it('should list more than 5 awesome things', function () {
-    expect(page.thumbnailEls.count()).toBeGreaterThan(5);
+  it('should not return any search results when search term is less than 3 letters', function () {
+    page.inputSearch.sendKeys('nb');
+    expect(page.masonryBricks.isPresent()).to.become(false).and.notify(next);
+  });
+
+  it('should return search results when search term is more than 3 letters', function () {
+    page.inputSearch.sendKeys('nba');
+    expect(page.masonryBricks.isPresent()).to.become(true).and.notify(next);
   });
 
 });
