@@ -1,7 +1,11 @@
 {
   "name": "angularGulp",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.14.0",
+    "gzippo": "^0.2.0",
+    "morgan": "^1.7.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
