@@ -3,7 +3,7 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 
-angular.module('angularGulp', [
+angular.module('angularFlickrSearch', [
     'ngAnimate',
     'ngCookies',
     'ngTouch',
