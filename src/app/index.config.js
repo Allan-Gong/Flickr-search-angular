@@ -1,4 +1,4 @@
-export function config ($logProvider, toastrConfig, RestangularProvider) {
+export function config ($logProvider, toastrConfig) {
   'ngInject';
   // Enable log
   $logProvider.debugEnabled(true);
@@ -9,7 +9,4 @@ export function config ($logProvider, toastrConfig, RestangularProvider) {
   toastrConfig.positionClass = 'toast-top-right';
   toastrConfig.preventDuplicates = true;
   toastrConfig.progressBar = true;
-
-  // RestangularProvider.setBaseUrl('https://api.flickr.com');
-  // RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
 }
