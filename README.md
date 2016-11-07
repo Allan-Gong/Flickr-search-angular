@@ -2,6 +2,24 @@
 
 Based on [generator-gulp-angular ](https://github.com/Swiip/generator-gulp-angular/blob/master/README.md)
 
+## Features
+
+![Logo](docs/assets/gulp.png)
+![Logo](docs/assets/angular.png)
+![Logo](docs/assets/bootstrap.png)
+![Logo](docs/assets/bower.png)
+![Logo](docs/assets/webpack.png)
+![Logo](docs/assets/karma.png)
+![Logo](docs/assets/browsersync.png)
+![Logo](docs/assets/jasmine.png)
+![Logo](docs/assets/protractor.png)
+![Logo](docs/assets/babel.png)
+![Logo](docs/assets/sass.png)
+
+
+[List features included](docs/usage.md#features-included-in-the-gulpfile)
+
+
 ## Usage
 
 ### Install
@@ -10,6 +28,8 @@ Based on [generator-gulp-angular ](https://github.com/Swiip/generator-gulp-angul
 ```
 npm install -g gulp bower
 ```
+
+##### Clone this repo and goto its directory
 
 ##### Install node packages:
 ```
