@@ -1,0 +1,49 @@
+<div class="container">
+
+  <nav class="navbar navbar-static-top navbar-inverse">
+    <div class="container-fluid">
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+          <span class="glyphicon glyphicon-search"></span> Flickr search
+        </a>
+      </div>
+
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input
+            size="50"
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            ng-model="main.searchTerm"
+            ng-change="main.search($event)"
+            ng-model-options="{debounce: 750}"
+          >
+        </div>
+      </form>
+
+    </div>
+  </nav>
+
+  <div masonry masonry-options="{ columnWidth: '.masonry-brick', 'gutter': 0 }" class="row masonry-container">
+
+    <div class="col-md-3 col-sm-6 masonry-brick" ng-repeat="item in main.items">
+
+      <div class="thumbnail">
+        <a href="{{item.link}}">
+          <img class="img-responsive" ng-src="{{item.media.m}}" alt="{{item.title}}">
+        </a>
+        <a href="{{item.link}}"><h3 class="clear">{{item.title}}</h3></a>
+        <i>{{item.author}}</i>
+        <div><span class="tag tag-info" ng-repeat="tag in item.tags">{{tag}}</span></div>
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="loading" ng-show="main.loading">Loading&#8230;</div>
