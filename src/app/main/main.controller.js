@@ -5,40 +5,15 @@ export class MainController {
     this.scope = $scope;
     this.log = $log;
     this.http = $http;
-    //this.window = $window;
 
     this.items = [];
-
-    this.bricks = [
-      { src: "http://lorempixel.com/400/200/" },
-      { src: "http://lorempixel.com/400/200/" },
-      { src: "http://lorempixel.com/400/200/" },
-      { src: "http://lorempixel.com/400/200/" }
-    ];
-
-    // this.typingTimeout = null;
-
-    // this.doneTypingInterval = 1000;
   }
-
-  // keyup(event){
-  //   var self = this;
-
-  //   clearTimeout(self.typingTimeout);
-  //   self.typingTimeout = setTimeout(self.search(event), self.doneTypingInterval);
-  // }
-
-  // keydown(){
-  //   this.log.debug('keydown typingTimer: ' + this.typingTimer);
-  //   clearTimeout(this.typingTimer);
-  // }
 
   search() {
 
     var self = this;
 
     self.items = [];
-    // self.scope.$broadcast('masonry.destroy');
 
     var searchTerm = this.searchTerm;
     self.log.debug('searchTerm:' + searchTerm);
@@ -50,24 +25,46 @@ export class MainController {
     self.http.jsonp('https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=JSON_CALLBACK', {
       params: { format: 'json', tagmode: 'any', tags: searchTerm }
     }).success(function(feed){
-      var items = feed.items;
 
-      angular.forEach(items, function(item, key) {
-        var strTags = item.tags;
-        var arrayTags = strTags.split(' ');
-        item.tags = arrayTags;
-      });
+      var items = [];
+
+      if (feed.items.length > 0) {
+
+        items = feed.items;
+
+        angular.forEach(items, function(item) {
+          var strTags = item.tags;
+          var arrayTags = strTags.split(' ');
+          item.tags = arrayTags;
+        });
+
+      } else {
+        items = [{
+          'title': 'Opps, your search for ' + searchTerm + ' returned no results',
+          'author': 'System administrator',
+          'link': 'javascript:;',
+          'media': { 'm': '' },
+          'tags': ['no-results']
+        }];
+      }
 
       self.items = items;
-      window.items = items;
 
       self.scope.$broadcast('masonry.reload');
 
-    }).error(function(data, status, header) {
-        self.log.error('error');
+    }).error(function(data, status) {
+        self.log.error('error: ' + status + 'data: ' + data);
+
+        self.items = [{
+          'title': 'Opps, an error occurred with Flickr web service: 502',
+          'author': 'System administrator',
+          'link': 'javascript:;',
+          'media': { 'm': '' },
+          'tags': ['error', '502']
+        }];
+
     }).finally(function () {
-      // Hide loading spinner whether our call succeeded or failed.
       self.loading = false;
-    });;
+    });
   }
 }
