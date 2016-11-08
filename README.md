@@ -2,6 +2,17 @@
 
 Based on [generator-gulp-angular ](https://github.com/Swiip/generator-gulp-angular/blob/master/README.md)
 
+## Live demo
+
+### Heruko
+
+https://limitless-lake-97136.herokuapp.com/
+
+### Google App Engine
+
+
+### Google Firebase
+
 ## Features
 
 ![Logo](docs/assets/gulp.png)
@@ -19,6 +30,11 @@ Based on [generator-gulp-angular ](https://github.com/Swiip/generator-gulp-angul
 
 [List features included](docs/usage.md#features-included-in-the-gulpfile)
 
+## Little Features
+
+* Nearly 100% (99.15%) unit test coverage
+* Detect when user input finishes before firing up API calls to Flickr
+* Auto refresh/inject on code change to all connected devices (powered by browserSync)
 
 ## Usage
 
