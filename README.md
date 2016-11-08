@@ -1,17 +1,16 @@
 # Flickr search (Angular JS)
 
-Based on [generator-gulp-angular ](https://github.com/Swiip/generator-gulp-angular/blob/master/README.md)
+Demo app build with Angular JS to perform live Flickr image search
 
 ## Live demo
 
-### Heruko
+### Heroku
 
-https://limitless-lake-97136.herokuapp.com/
+https://limitless-lake-97136.herokuapp.com
 
 ### Google App Engine
 
-
-### Google Firebase
+https://flickr-angular-demo.appspot.com
 
 ## Features
 
