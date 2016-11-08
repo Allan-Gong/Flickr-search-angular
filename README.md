@@ -31,9 +31,10 @@ https://flickr-angular-demo.appspot.com
 
 ## Little Features
 
+* Deployed to Paas services(Heroku & GAE) for easy demo
 * Nearly 100% (99.15%) unit test coverage
 * Detect when user input finishes before firing up API calls to Flickr
-* Auto refresh/inject on code change to all connected devices (powered by browserSync)
+* Auto refresh/inject on code change to all connected devices in local development mode (powered by Gulp with browserSync)
 
 ## Usage
 
