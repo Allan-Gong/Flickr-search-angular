@@ -12,6 +12,13 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // bower:scss
 // endbower
 
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -23,6 +30,11 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   img.pull-right {
     width: 50px;
   }
+
+  h3{
+    font-size:18px;
+  }
+
 }
 
 .masonry-brick {
