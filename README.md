@@ -26,15 +26,13 @@ https://flickr-angular-demo.appspot.com
 ![Logo](docs/assets/babel.png)
 ![Logo](docs/assets/sass.png)
 
-
-[List features included](docs/usage.md#features-included-in-the-gulpfile)
-
 ## Little Features
 
 * Deployed to Paas services(Heroku & GAE) for easy demo
 * Nearly 100% (99.15%) unit test coverage
 * Detect when user input finishes before firing up API calls to Flickr
 * Auto refresh/inject on code change to all connected devices in local development mode (powered by Gulp with browserSync)
+* Using [Masonry](https://github.com/desandro/masonry) for search result layout
 
 ## Usage
 
@@ -68,4 +66,3 @@ bower install
 * `gulp test:auto` to launch your unit tests with Karma in watch mode
 * `gulp protractor` to launch your e2e tests with Protractor
 * `gulp protractor:dist` to launch your e2e tests with Protractor on the dist files
-
