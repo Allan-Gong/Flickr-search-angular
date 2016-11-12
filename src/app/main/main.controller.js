@@ -18,6 +18,17 @@ export class MainController {
     var searchTerm = this.searchTerm;
     self.log.debug('searchTerm:' + searchTerm);
 
+    const internalServerErrorItem = {
+      'title': 'Opps, an error occurred with Flickr web service: 502',
+      'author': 'System administrator',
+      'link': 'javascript:;',
+      'media': { 'm': '' },
+      'tags': [
+        {value: 'error', isSearchTerm: false},
+        {value: '502', isSearchTerm: true}
+      ]
+    };
+
     if ( searchTerm.length < 3 ) { return; }
 
     self.loading = true;
@@ -28,40 +39,44 @@ export class MainController {
 
       var items = [];
 
-      if (feed.items.length > 0) {
+      try {
+        if (feed.items.length > 0) {
 
-        items = feed.items;
+          items = feed.items;
 
-        angular.forEach(items, function(item) {
-          var strTags = item.tags;
-          var arrayTags = strTags.split(' ');
-          item.tags = arrayTags;
-        });
+          angular.forEach(items, function(item) {
+            var strTags = item.tags;
+            var splitedTags = strTags.split(' ');
 
-      } else {
-        items = [{
-          'title': 'Opps, your search for ' + searchTerm + ' returned no results',
-          'author': 'System administrator',
-          'link': 'javascript:;',
-          'media': { 'm': '' },
-          'tags': ['no-results']
-        }];
+            item.tags = splitedTags.map(function(strTag){
+              return { value: strTag, isSearchTerm: strTag == searchTerm ? true : false };
+            });
+          });
+
+        } else {
+          items = [{
+            'title': 'Opps, your search for ' + searchTerm + ' returned no results',
+            'author': 'System administrator',
+            'link': 'javascript:;',
+            'media': { 'm': '' },
+            'tags': [{value:'no-results', isSearchTerm: true}]
+          }];
+        }
+
+      }
+      catch(exception) {
+        items = [internalServerErrorItem];
+      }
+      finally{
+          self.scope.$broadcast('masonry.reload');
       }
 
       self.items = items;
 
-      self.scope.$broadcast('masonry.reload');
-
     }).error(function(data, status) {
         self.log.error('error: ' + status + 'data: ' + data);
 
-        self.items = [{
-          'title': 'Opps, an error occurred with Flickr web service: 502',
-          'author': 'System administrator',
-          'link': 'javascript:;',
-          'media': { 'm': '' },
-          'tags': ['error', '502']
-        }];
+        self.items = [internalServerErrorItem];
 
     }).finally(function () {
       self.loading = false;
