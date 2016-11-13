@@ -32,7 +32,8 @@ https://flickr-angular-demo.appspot.com
 * Nearly 100% (99.15%) unit test coverage
 * Detect when user input finishes before firing up API calls to Flickr
 * Auto refresh/inject on code change to all connected devices in local development mode (powered by Gulp with browserSync)
-* Using [Masonry](https://github.com/desandro/masonry) for search result layout
+* Using [Masonry](https://github.com/desandro/masonry) for rendering search result layout
+* Using [Codeship](https://codeship.com/) for Continuous Integration
 
 ## Usage
 
