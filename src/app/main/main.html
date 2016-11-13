@@ -19,6 +19,7 @@
             ng-model="main.searchTerm"
             ng-change="main.search($event)"
             ng-model-options="{debounce: 750}"
+            ng-keydown="($event.which == 13) ? $event.preventDefault() : return;"
             autofocus
           >
         </div>
