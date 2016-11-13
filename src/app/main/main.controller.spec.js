@@ -16,8 +16,6 @@ describe('main.controller', () => {
 
   describe('on success', () => {
 
-
-
     it('should return items on search() when searchTerm is equal to or greater than 3 letters', () => {
 
       var returnedItems = [
@@ -51,14 +49,20 @@ describe('main.controller', () => {
           'author': 'Test author 1',
           'link': 'https://www.flickr.com/services/api/dummy-link-1/',
           'media': { 'm': 'https://www.flickr.com/services/api/image/test1.png' },
-          'tags': ['tag11', 'tag12']
+          'tags': [
+            {value: 'tag11', isSearchTerm: false},
+            {value: 'tag12', isSearchTerm: false}
+          ]
         },
         {
           'title': 'Test title 2',
           'author': 'Test author 2',
           'link': 'https://www.flickr.com/services/api/dummy-link-2/',
           'media': { 'm': 'https://www.flickr.com/services/api/image/test2.png' },
-          'tags': ['tag21', 'tag22']
+          'tags': [
+            {value: 'tag21', isSearchTerm: false},
+            {value: 'tag22', isSearchTerm: false}
+          ]
         }
       ];
 
@@ -87,7 +91,10 @@ describe('main.controller', () => {
 
       var errorItem = vm.items[0];
 
-      expect(errorItem.tags).toEqual(['error', '502']);
+      expect(errorItem.tags).toEqual([
+        {value: 'error', isSearchTerm: false},
+        {value: '502', isSearchTerm: true}
+      ]);
 
     });
 
@@ -104,7 +111,7 @@ describe('main.controller', () => {
 
       var errorItem = vm.items[0];
 
-      expect(errorItem.tags).toEqual(['no-results']);
+      expect(errorItem.tags).toEqual([{value:'no-results', isSearchTerm: true}]);
 
     });
   });
