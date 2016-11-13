@@ -19,6 +19,7 @@
             ng-model="main.searchTerm"
             ng-change="main.search($event)"
             ng-model-options="{debounce: 750}"
+            autofocus
           >
         </div>
       </form>
@@ -37,7 +38,7 @@
         <a href="{{item.link}}" title="{{item.title}}"><h3 class="truncate">{{item.title}}</h3></a>
         <i>{{item.author}}</i>
         <div>
-          <span 
+          <span
             class="tag tag-info {{tag.isSearchTerm ? 'is-search-term' : ''}}"
             ng-repeat="tag in item.tags"
           >
