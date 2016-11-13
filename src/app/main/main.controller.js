@@ -31,10 +31,13 @@ export class MainController {
 
     if ( searchTerm.length < 3 ) { return; }
 
+    const searchTerms = searchTerm.split(' ');
+    const formattedSearchTerms = searchTerms.join(',');
+
     self.loading = true;
 
     self.http.jsonp('https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=JSON_CALLBACK', {
-      params: { format: 'json', tagmode: 'any', tags: searchTerm }
+      params: { format: 'json', tagmode: 'all', tags: formattedSearchTerms }
     }).success(function(feed){
 
       var items = [];
@@ -49,7 +52,7 @@ export class MainController {
             var splitedTags = strTags.split(' ');
 
             item.tags = splitedTags.map(function(strTag){
-              return { value: strTag, isSearchTerm: strTag == searchTerm ? true : false };
+              return { value: strTag, isSearchTerm: searchTerms.indexOf(strTag) >= 0 ? true : false };
             });
           });
 
