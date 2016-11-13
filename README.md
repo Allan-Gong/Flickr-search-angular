@@ -67,3 +67,13 @@ bower install
 * `gulp test:auto` to launch your unit tests with Karma in watch mode
 * `gulp protractor` to launch your e2e tests with Protractor
 * `gulp protractor:dist` to launch your e2e tests with Protractor on the dist files
+
+### Future enhancements
+
+* Complete unfinished end-to-end test with [Protractor](http://www.protractortest.org)
+* Sorting search results based on user-selected criterias
+* Pagination (infinite scroll)
+* Convert it to PWA ([Progressive Web App](https://developers.google.com/web/progressive-web-apps/))
+  * Add app manifest file for easy discovery, "add to home screen" feature, controlling viewport and installability
+  * Move API invokations and data manipulations to service worker for better performance
+  * Cache application shell using [sw-precache](https://github.com/GoogleChrome/sw-precache)
