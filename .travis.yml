@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "6.1"
+before_script:
+  - npm install -g gulp
+script:
+  - npm install
+  - bower install
+  - gulp test
+install:
+  - npm install -g firebase-tools
+after_success:
+  - firebase deploy --token
