@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "dependencies": {
     "express": "^4.14.0",
+    "gulp-cli": "^1.2.2",
     "gzippo": "^0.2.0",
     "morgan": "^1.7.0"
   },
   "scripts": {
-    "test": "gulp test"
+    "start": "node web.js",
+    "postinstall": "gulp build"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
@@ -60,8 +62,5 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "scripts": {
-    "start": "node web.js"
   }
 }
