@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node web.js",
-    "postinstall": "gulp build"
+    "prestart": "gulp build",
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
