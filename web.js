@@ -7,4 +7,7 @@ app.use(gzippo.staticGzip(__dirname + "/dist"));
 app.use(function(req, res){
   res.sendFile(__dirname + "/dist/index.html");
 });
-app.listen(process.env.PORT || 5000);
+
+var server = app.listen(process.env.PORT || 5000, function() {
+  console.log('Express is listening on port ' + server.address().port)
+});
