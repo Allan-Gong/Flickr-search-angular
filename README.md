@@ -2,7 +2,7 @@
 
 Demo app build with Angular JS to perform live Flickr image search
 
-## Live demo
+## Live demos
 
 ### Heroku
 
@@ -11,6 +11,9 @@ https://limitless-lake-97136.herokuapp.com
 ### Google App Engine
 
 https://flickr-angular-demo.appspot.com
+
+### Google Firebase
+https://flickr-angular-demo.firebaseapp.com
 
 ## Features
 
